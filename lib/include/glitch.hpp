@@ -18,5 +18,6 @@ namespace glitch{
         std::vector<unsigned char> pixels;
 
         std::vector<unsigned char> get_pixel(unsigned int, unsigned int);
+        void set_pixel(unsigned int, unsigned int, std::vector<unsigned char>);
     };
 }

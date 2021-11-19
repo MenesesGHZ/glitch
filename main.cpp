@@ -12,7 +12,7 @@ int main(){
     strcat(filename, "/test/1.png");
 
     // defining an image object
-    glitch::Image image = glitch::Image();
+    glitch::Image image;
 
     // loading image
     unsigned error = lodepng::decode(image.pixels, image.width, image.height, filename);
@@ -30,8 +30,17 @@ int main(){
               << "\nA:" << static_cast<unsigned>(image.pixels[3]) << std::endl << std::endl;
 
     // testing get pixel
-    std::vector<unsigned char> pixel = image.get_pixel(90,230);
+    std::vector<unsigned char> pixel = image.get_pixel(90, 230);
     std::cout << "Selected Pixel: (must be black or almost black) " 
+              << "\nR:" << static_cast<unsigned>(pixel[0]) 
+              << "\nG:" << static_cast<unsigned>(pixel[1]) 
+              << "\nB:" << static_cast<unsigned>(pixel[2]) 
+              << "\nA:" << static_cast<unsigned>(pixel[3]) << std::endl << std::endl;
+
+    // testing set pixel
+    image.set_pixel(90, 230, std::vector<unsigned char>{51,81,101,171});
+    pixel = image.get_pixel(90,230);
+    std::cout << "Modified Pixel: " 
               << "\nR:" << static_cast<unsigned>(pixel[0]) 
               << "\nG:" << static_cast<unsigned>(pixel[1]) 
               << "\nB:" << static_cast<unsigned>(pixel[2]) 
