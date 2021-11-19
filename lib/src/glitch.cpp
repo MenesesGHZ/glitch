@@ -8,12 +8,18 @@ void glitch::pixel_slice(){
     std::cout << "testing pixel slice" << std::endl;
 }
 
-//Mat glitch::imread(string path){
-//    Mat image = imread(path, IMREAD_GRAYSCALE);
-//  
-//    if (image.empty()) {
-//        throw "File not Found";
-//    }
-//
-//    return image;
-//}
+std::vector<unsigned char> glitch::Image::get_pixel(unsigned int x, unsigned int y){
+    if(x > this->width || y > this->height){
+        throw std::invalid_argument("invalid coordinate"); 
+    }
+
+    const int pixel_i = (x + y * width) * 4;
+    std::vector<unsigned char> pixel = {
+        this->pixels[pixel_i],
+        this->pixels[pixel_i + 1],
+        this->pixels[pixel_i + 2],
+        this->pixels[pixel_i + 3]
+    }; 
+
+    return pixel;
+}

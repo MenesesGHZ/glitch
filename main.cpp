@@ -11,27 +11,31 @@ int main(){
     strcpy(filename , PROJECT_SOURCE_DIR);
     strcat(filename, "/test/1.png");
 
-    // defining image vector and its width and height
-    std::vector<unsigned char> image; 
-    unsigned width, height;
+    // defining an image object
+    glitch::Image image = glitch::Image();
 
     // loading image
-    unsigned error = lodepng::decode(image, width, height, filename);
+    unsigned error = lodepng::decode(image.pixels, image.width, image.height, filename);
     if(error){
         std::cout << "decoder error " << error << ": " << lodepng_error_text(error) << std::endl;
     } 
 
     // mock print
     std::cout << "Filename: " << filename << std::endl;
-    std::cout << "Width: " << width << "  Height: " << height << std::endl << std::endl;
+    std::cout << "Width: " << image.width << "  Height: " << image.height << std::endl << std::endl;
     std::cout << "First Pixel: " 
-              << "\nR:" << static_cast<unsigned>(image[0]) 
-              << "\nG:" << static_cast<unsigned>(image[1]) 
-              << "\nB:" << static_cast<unsigned>(image[2]) 
-              << "\nA:" << static_cast<unsigned>(image[3]) << std::endl << std::endl;
+              << "\nR:" << static_cast<unsigned>(image.pixels[0]) 
+              << "\nG:" << static_cast<unsigned>(image.pixels[1]) 
+              << "\nB:" << static_cast<unsigned>(image.pixels[2]) 
+              << "\nA:" << static_cast<unsigned>(image.pixels[3]) << std::endl << std::endl;
 
-    // trash testing
-    glitch::pixel_slice();
+    // testing get pixel
+    std::vector<unsigned char> pixel = image.get_pixel(90,230);
+    std::cout << "Selected Pixel: (must be black or almost black) " 
+              << "\nR:" << static_cast<unsigned>(pixel[0]) 
+              << "\nG:" << static_cast<unsigned>(pixel[1]) 
+              << "\nB:" << static_cast<unsigned>(pixel[2]) 
+              << "\nA:" << static_cast<unsigned>(pixel[3]) << std::endl;
 
     return 0;
 }
