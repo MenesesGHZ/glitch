@@ -11,8 +11,12 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # defining glitch library
-add_library(glitch src/glitch.cpp)
-target_include_directories(glitch PUBLIC "${PROJECT_SOURCE_DIR}/include")
+add_library(glitch lib/src/glitch.cpp)
+target_include_directories(glitch PUBLIC "${PROJECT_SOURCE_DIR}/lib/include")
+
+# adding vendor libraries
+add_library(lodepng vendor/lodepng/lodepng.cpp)
+target_include_directories(lodepng PUBLIC "${PROJECT_SOURCE_DIR}/vendor/lodepng")
 
 # linking libraries to executable
-target_link_libraries(${PROJECT_NAME} PUBLIC glitch)
+target_link_libraries(${PROJECT_NAME} PUBLIC glitch lodepng)

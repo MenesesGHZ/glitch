@@ -99,6 +99,7 @@ Glitch_EXTERNAL_OBJECTS =
 Glitch: CMakeFiles/Glitch.dir/main.cpp.o
 Glitch: CMakeFiles/Glitch.dir/build.make
 Glitch: libglitch.a
+Glitch: liblodepng.a
 Glitch: CMakeFiles/Glitch.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Glitch"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Glitch.dir/link.txt --verbose=$(VERBOSE)

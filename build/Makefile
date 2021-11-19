@@ -130,6 +130,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named lodepng
+
+# Build rule for target.
+lodepng: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lodepng
+.PHONY : lodepng
+
+# fast build rule for target.
+lodepng/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lodepng.dir/build.make CMakeFiles/lodepng.dir/build
+.PHONY : lodepng/fast
+
+#=============================================================================
 # Target rules for targets named glitch
 
 # Build rule for target.
@@ -154,6 +167,33 @@ Glitch: cmake_check_build_system
 Glitch/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Glitch.dir/build.make CMakeFiles/Glitch.dir/build
 .PHONY : Glitch/fast
+
+lib/src/glitch.o: lib/src/glitch.cpp.o
+
+.PHONY : lib/src/glitch.o
+
+# target to build an object file
+lib/src/glitch.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/glitch.dir/build.make CMakeFiles/glitch.dir/lib/src/glitch.cpp.o
+.PHONY : lib/src/glitch.cpp.o
+
+lib/src/glitch.i: lib/src/glitch.cpp.i
+
+.PHONY : lib/src/glitch.i
+
+# target to preprocess a source file
+lib/src/glitch.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/glitch.dir/build.make CMakeFiles/glitch.dir/lib/src/glitch.cpp.i
+.PHONY : lib/src/glitch.cpp.i
+
+lib/src/glitch.s: lib/src/glitch.cpp.s
+
+.PHONY : lib/src/glitch.s
+
+# target to generate assembly for a file
+lib/src/glitch.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/glitch.dir/build.make CMakeFiles/glitch.dir/lib/src/glitch.cpp.s
+.PHONY : lib/src/glitch.cpp.s
 
 main.o: main.cpp.o
 
@@ -182,32 +222,32 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Glitch.dir/build.make CMakeFiles/Glitch.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-src/glitch.o: src/glitch.cpp.o
+vendor/lodepng/lodepng.o: vendor/lodepng/lodepng.cpp.o
 
-.PHONY : src/glitch.o
+.PHONY : vendor/lodepng/lodepng.o
 
 # target to build an object file
-src/glitch.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/glitch.dir/build.make CMakeFiles/glitch.dir/src/glitch.cpp.o
-.PHONY : src/glitch.cpp.o
+vendor/lodepng/lodepng.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lodepng.dir/build.make CMakeFiles/lodepng.dir/vendor/lodepng/lodepng.cpp.o
+.PHONY : vendor/lodepng/lodepng.cpp.o
 
-src/glitch.i: src/glitch.cpp.i
+vendor/lodepng/lodepng.i: vendor/lodepng/lodepng.cpp.i
 
-.PHONY : src/glitch.i
+.PHONY : vendor/lodepng/lodepng.i
 
 # target to preprocess a source file
-src/glitch.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/glitch.dir/build.make CMakeFiles/glitch.dir/src/glitch.cpp.i
-.PHONY : src/glitch.cpp.i
+vendor/lodepng/lodepng.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lodepng.dir/build.make CMakeFiles/lodepng.dir/vendor/lodepng/lodepng.cpp.i
+.PHONY : vendor/lodepng/lodepng.cpp.i
 
-src/glitch.s: src/glitch.cpp.s
+vendor/lodepng/lodepng.s: vendor/lodepng/lodepng.cpp.s
 
-.PHONY : src/glitch.s
+.PHONY : vendor/lodepng/lodepng.s
 
 # target to generate assembly for a file
-src/glitch.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/glitch.dir/build.make CMakeFiles/glitch.dir/src/glitch.cpp.s
-.PHONY : src/glitch.cpp.s
+vendor/lodepng/lodepng.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lodepng.dir/build.make CMakeFiles/lodepng.dir/vendor/lodepng/lodepng.cpp.s
+.PHONY : vendor/lodepng/lodepng.cpp.s
 
 # Help Target
 help:
@@ -219,12 +259,16 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Glitch"
 	@echo "... glitch"
+	@echo "... lodepng"
+	@echo "... lib/src/glitch.o"
+	@echo "... lib/src/glitch.i"
+	@echo "... lib/src/glitch.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... src/glitch.o"
-	@echo "... src/glitch.i"
-	@echo "... src/glitch.s"
+	@echo "... vendor/lodepng/lodepng.o"
+	@echo "... vendor/lodepng/lodepng.i"
+	@echo "... vendor/lodepng/lodepng.s"
 .PHONY : help
 
 

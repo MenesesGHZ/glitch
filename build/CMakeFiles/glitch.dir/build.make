@@ -76,27 +76,27 @@ include CMakeFiles/glitch.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/glitch.dir/flags.make
 
-CMakeFiles/glitch.dir/src/glitch.cpp.o: CMakeFiles/glitch.dir/flags.make
-CMakeFiles/glitch.dir/src/glitch.cpp.o: ../src/glitch.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/glitch.dir/src/glitch.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glitch.dir/src/glitch.cpp.o -c /home/meneses/Documents/PROYECTOS/glitch/src/glitch.cpp
+CMakeFiles/glitch.dir/lib/src/glitch.cpp.o: CMakeFiles/glitch.dir/flags.make
+CMakeFiles/glitch.dir/lib/src/glitch.cpp.o: ../lib/src/glitch.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/glitch.dir/lib/src/glitch.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glitch.dir/lib/src/glitch.cpp.o -c /home/meneses/Documents/PROYECTOS/glitch/lib/src/glitch.cpp
 
-CMakeFiles/glitch.dir/src/glitch.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/glitch.dir/src/glitch.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/meneses/Documents/PROYECTOS/glitch/src/glitch.cpp > CMakeFiles/glitch.dir/src/glitch.cpp.i
+CMakeFiles/glitch.dir/lib/src/glitch.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/glitch.dir/lib/src/glitch.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/meneses/Documents/PROYECTOS/glitch/lib/src/glitch.cpp > CMakeFiles/glitch.dir/lib/src/glitch.cpp.i
 
-CMakeFiles/glitch.dir/src/glitch.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/glitch.dir/src/glitch.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/meneses/Documents/PROYECTOS/glitch/src/glitch.cpp -o CMakeFiles/glitch.dir/src/glitch.cpp.s
+CMakeFiles/glitch.dir/lib/src/glitch.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/glitch.dir/lib/src/glitch.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/meneses/Documents/PROYECTOS/glitch/lib/src/glitch.cpp -o CMakeFiles/glitch.dir/lib/src/glitch.cpp.s
 
 # Object files for target glitch
 glitch_OBJECTS = \
-"CMakeFiles/glitch.dir/src/glitch.cpp.o"
+"CMakeFiles/glitch.dir/lib/src/glitch.cpp.o"
 
 # External object files for target glitch
 glitch_EXTERNAL_OBJECTS =
 
-libglitch.a: CMakeFiles/glitch.dir/src/glitch.cpp.o
+libglitch.a: CMakeFiles/glitch.dir/lib/src/glitch.cpp.o
 libglitch.a: CMakeFiles/glitch.dir/build.make
 libglitch.a: CMakeFiles/glitch.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libglitch.a"

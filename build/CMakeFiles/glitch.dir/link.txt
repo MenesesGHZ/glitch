@@ -1,2 +1,2 @@
-/usr/bin/ar qc libglitch.a CMakeFiles/glitch.dir/src/glitch.cpp.o
+/usr/bin/ar qc libglitch.a CMakeFiles/glitch.dir/lib/src/glitch.cpp.o
 /usr/bin/ranlib libglitch.a

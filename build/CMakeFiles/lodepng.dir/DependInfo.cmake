@@ -4,20 +4,17 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/meneses/Documents/PROYECTOS/glitch/main.cpp" "/home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles/Glitch.dir/main.cpp.o"
+  "/home/meneses/Documents/PROYECTOS/glitch/vendor/lodepng/lodepng.cpp" "/home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles/lodepng.dir/vendor/lodepng/lodepng.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../lib/include"
   "../vendor/lodepng"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles/glitch.dir/DependInfo.cmake"
-  "/home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles/lodepng.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

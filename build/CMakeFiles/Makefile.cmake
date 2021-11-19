@@ -45,6 +45,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/lodepng.dir/DependInfo.cmake"
   "CMakeFiles/glitch.dir/DependInfo.cmake"
   "CMakeFiles/Glitch.dir/DependInfo.cmake"
   )
