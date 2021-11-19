@@ -4,21 +4,26 @@
 
 ### Prerequisites
 * cmake>=3.5.1
-* opencv4
 * openmp
-...
+* courage
+* caffeine
+* simping issues
 
 ### Build
+First of all, clone this beach ⚓. After that follow the next steps in order to make a build.
+
    ```sh
-   git clone https://github.com/MenesesGHZ/glitch
    cd glitch/
-   mkdir build
+   rm -rf build/*
    cd build
    cmake ..
    make
    ```
 
 ### Usage
+
 ```sh
-   ./Glitch
+
+./Glitch
+
 ```
