@@ -21,7 +21,7 @@ First of all, clone this beach ⚓. After that follow the next steps in order to
    ```
 
 ### Usage
-
+Under glitch/build run the following command.
 ```sh
 
 ./Glitch
