@@ -4,4 +4,5 @@
 CMakeFiles/Glitch.dir/main.cpp.o: ../lib/include/glitch.hpp
 CMakeFiles/Glitch.dir/main.cpp.o: ../vendor/lodepng/lodepng.h
 CMakeFiles/Glitch.dir/main.cpp.o: ../main.cpp
+CMakeFiles/Glitch.dir/main.cpp.o: config.h
 

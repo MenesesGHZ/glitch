@@ -11,6 +11,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.18.3/CMakeCCompiler.cmake"
   "CMakeFiles/3.18.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.18.3/CMakeSystem.cmake"
+  "../config.h.in"
   "/usr/local/share/cmake-3.18/Modules/CMakeCInformation.cmake"
   "/usr/local/share/cmake-3.18/Modules/CMakeCXXInformation.cmake"
   "/usr/local/share/cmake-3.18/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
@@ -40,6 +41,7 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
+  "config.h"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 

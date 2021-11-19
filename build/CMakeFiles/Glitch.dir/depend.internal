@@ -5,3 +5,4 @@ CMakeFiles/Glitch.dir/main.cpp.o
  ../lib/include/glitch.hpp
  ../vendor/lodepng/lodepng.h
  /home/meneses/Documents/PROYECTOS/glitch/main.cpp
+ config.h
