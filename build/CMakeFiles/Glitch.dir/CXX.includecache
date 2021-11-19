@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/glitch.hpp
+iostream
+-
+
+/home/meneses/Documents/PROYECTOS/glitch/main.cpp
+string
+-
+glitch.hpp
+/home/meneses/Documents/PROYECTOS/glitch/glitch.hpp
+

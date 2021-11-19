@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/Glitch.dir/main.cpp.o -o Glitch  libglitch.a 
