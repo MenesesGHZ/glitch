@@ -72,8 +72,8 @@ CMAKE_BINARY_DIR = /home/meneses/Documents/PROYECTOS/glitch/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/lodepng.dir/all
 all: CMakeFiles/glitch.dir/all
+all: CMakeFiles/lodepng.dir/all
 all: CMakeFiles/Glitch.dir/all
 
 .PHONY : all
@@ -84,11 +84,38 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/lodepng.dir/clean
 clean: CMakeFiles/glitch.dir/clean
+clean: CMakeFiles/lodepng.dir/clean
 clean: CMakeFiles/Glitch.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/glitch.dir
+
+# All Build rule for target.
+CMakeFiles/glitch.dir/all: CMakeFiles/lodepng.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/glitch.dir/build.make CMakeFiles/glitch.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/glitch.dir/build.make CMakeFiles/glitch.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles --progress-num=3,4 "Built target glitch"
+.PHONY : CMakeFiles/glitch.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/glitch.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/glitch.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles 0
+.PHONY : CMakeFiles/glitch.dir/rule
+
+# Convenience name for target.
+glitch: CMakeFiles/glitch.dir/rule
+
+.PHONY : glitch
+
+# clean rule for target.
+CMakeFiles/glitch.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/glitch.dir/build.make CMakeFiles/glitch.dir/clean
+.PHONY : CMakeFiles/glitch.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/lodepng.dir
@@ -116,33 +143,6 @@ lodepng: CMakeFiles/lodepng.dir/rule
 CMakeFiles/lodepng.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lodepng.dir/build.make CMakeFiles/lodepng.dir/clean
 .PHONY : CMakeFiles/lodepng.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/glitch.dir
-
-# All Build rule for target.
-CMakeFiles/glitch.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/glitch.dir/build.make CMakeFiles/glitch.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/glitch.dir/build.make CMakeFiles/glitch.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles --progress-num=3,4 "Built target glitch"
-.PHONY : CMakeFiles/glitch.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/glitch.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/glitch.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles 0
-.PHONY : CMakeFiles/glitch.dir/rule
-
-# Convenience name for target.
-glitch: CMakeFiles/glitch.dir/rule
-
-.PHONY : glitch
-
-# clean rule for target.
-CMakeFiles/glitch.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/glitch.dir/build.make CMakeFiles/glitch.dir/clean
-.PHONY : CMakeFiles/glitch.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/Glitch.dir

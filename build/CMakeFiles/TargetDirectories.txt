@@ -1,5 +1,5 @@
 /home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles/rebuild_cache.dir
 /home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles/edit_cache.dir
-/home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles/lodepng.dir
 /home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles/glitch.dir
+/home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles/lodepng.dir
 /home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles/Glitch.dir

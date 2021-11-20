@@ -130,19 +130,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named lodepng
-
-# Build rule for target.
-lodepng: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lodepng
-.PHONY : lodepng
-
-# fast build rule for target.
-lodepng/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lodepng.dir/build.make CMakeFiles/lodepng.dir/build
-.PHONY : lodepng/fast
-
-#=============================================================================
 # Target rules for targets named glitch
 
 # Build rule for target.
@@ -154,6 +141,19 @@ glitch: cmake_check_build_system
 glitch/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/glitch.dir/build.make CMakeFiles/glitch.dir/build
 .PHONY : glitch/fast
+
+#=============================================================================
+# Target rules for targets named lodepng
+
+# Build rule for target.
+lodepng: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lodepng
+.PHONY : lodepng
+
+# fast build rule for target.
+lodepng/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lodepng.dir/build.make CMakeFiles/lodepng.dir/build
+.PHONY : lodepng/fast
 
 #=============================================================================
 # Target rules for targets named Glitch

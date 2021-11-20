@@ -9,8 +9,14 @@
 ../lib/include/glitch.hpp
 vector
 -
+omp.h
+-
 iostream
 -
+algorithm
+-
+lodepng.h
+../lib/include/lodepng.h
 
 ../vendor/lodepng/lodepng.h
 string.h
@@ -31,8 +37,6 @@ vector
 -
 glitch.hpp
 /home/meneses/Documents/PROYECTOS/glitch/glitch.hpp
-lodepng.h
-/home/meneses/Documents/PROYECTOS/glitch/lodepng.h
 config.h
 /home/meneses/Documents/PROYECTOS/glitch/config.h
 

@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/meneses/Documents/PROYECTOS/glitch/build -I/home/meneses/Documents/PROYECTOS/glitch/lib/include -I/home/meneses/Documents/PROYECTOS/glitch/vendor/lodepng
 
-CXX_FLAGS = 
+CXX_FLAGS =  -fopenmp
 

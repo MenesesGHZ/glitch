@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/meneses/Documents/PROYECTOS/glitch/vendor/lodepng
 
-CXX_FLAGS = -std=gnu++11
+CXX_FLAGS =  -fopenmp -std=gnu++11
 

@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/Glitch.dir/main.cpp.o -o Glitch  libglitch.a liblodepng.a 
+/usr/bin/c++  -fopenmp CMakeFiles/Glitch.dir/main.cpp.o -o Glitch  libglitch.a liblodepng.a 

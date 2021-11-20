@@ -3,4 +3,5 @@
 
 CMakeFiles/glitch.dir/lib/src/glitch.cpp.o
  ../lib/include/glitch.hpp
+ ../vendor/lodepng/lodepng.h
  /home/meneses/Documents/PROYECTOS/glitch/lib/src/glitch.cpp
