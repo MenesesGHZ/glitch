@@ -5,7 +5,7 @@ glitch::Pixel glitch::Image::get_pixel(unsigned int x, unsigned int y){
         throw std::invalid_argument("invalid coordinate"); 
     }
 
-    const int pixel_i = (x + y * width) * 4;
+    const int pixel_i = x + y * width;
     return this->pixels[pixel_i];
 }
 
@@ -14,7 +14,7 @@ void glitch::Image::set_pixel(unsigned int x, unsigned int y, std::vector<unsign
         throw std::invalid_argument("invalid coordinate"); 
     }
 
-    const int pixel_i = (x + y * width) * 4;
+    const int pixel_i = x + y * width;
     this->pixels[pixel_i].r = pixel[0];
     this->pixels[pixel_i].g = pixel[1];
     this->pixels[pixel_i].b = pixel[2];
@@ -26,7 +26,7 @@ void glitch::Image::set_pixel(unsigned int x, unsigned int y, glitch::Pixel pixe
         throw std::invalid_argument("invalid coordinate"); 
     }
 
-    const int pixel_i = (x + y * width) * 4;
+    const int pixel_i = x + y * width;
     this->pixels[pixel_i] = pixel;
 }
 
