@@ -7,7 +7,7 @@ void glitch::sort_distorsion(glitch::Image* image, unsigned int sections){
         std::vector<glitch::Pixel>::iterator begin_i = image->pixels.begin() + (i * (image->pixels.size() / sections));
         std::vector<glitch::Pixel>::iterator end_i = image->pixels.begin() + ((i + 1) * (image->pixels.size() / sections));
         std::sort(begin_i, end_i, [](Pixel p1, Pixel p2) {
-                return (p1.r + p1.g + p1.b) / 3 < (p2.r + p2.g + p2.b) / 3;
+                return p1.get_intensity() < p2.get_intensity();
         });
     }
 }
@@ -34,8 +34,8 @@ void glitch::Image::set_pixel(unsigned int x, unsigned int y, std::vector<unsign
 }
 
 
-int glitch::Image::get_pixel_intensity(int i){
-    return (this->pixels[i].r + this->pixels[i].g + this->pixels[i].b) / 3;
+int glitch::Pixel::get_intensity(){
+    return (this->r + this->g + this->b) / 3;
 }
 
 void glitch::Image::load_image(char *filename){

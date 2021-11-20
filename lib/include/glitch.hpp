@@ -7,12 +7,14 @@
 #include "lodepng.h"
 
 namespace glitch{
-    // base image class
-    struct Pixel{
-      unsigned char r;
-      unsigned char g;
-      unsigned char b;
-      unsigned char a;
+
+    class Pixel{
+      public:
+        unsigned char r;
+        unsigned char g;
+        unsigned char b;
+        unsigned char a;
+        int get_intensity();
     };
 
     class Image{
@@ -24,10 +26,7 @@ namespace glitch{
         Pixel get_pixel(unsigned int, unsigned int);
         void set_pixel(unsigned int, unsigned int, std::vector<unsigned char>);
         
-        int get_pixel_intensity(int);
         std::vector<unsigned char> get_raw_pixels();
-
-
         void load_image(char *);
         void save_image(const char*);
     };
