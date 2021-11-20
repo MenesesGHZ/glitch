@@ -22,6 +22,7 @@ add_library(glitch lib/src/glitch.cpp)
 target_include_directories(glitch PUBLIC "${PROJECT_SOURCE_DIR}/lib/include")
 target_link_libraries(glitch PUBLIC lodepng)
 
+# add openmp library
 find_package(OpenMP)
 if (OPENMP_FOUND)
     set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")

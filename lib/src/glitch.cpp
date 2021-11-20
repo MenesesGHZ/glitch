@@ -1,17 +1,5 @@
 #include "glitch.hpp"
 
-void glitch::sort_distorsion(glitch::Image* image, unsigned int sections){   
-    omp_set_num_threads(4);
-    #pragma omp parallel for
-    for (int i = 0; i < sections; i++){
-        std::vector<glitch::Pixel>::iterator begin_i = image->pixels.begin() + (i * (image->pixels.size() / sections));
-        std::vector<glitch::Pixel>::iterator end_i = image->pixels.begin() + ((i + 1) * (image->pixels.size() / sections));
-        std::sort(begin_i, end_i, [](Pixel p1, Pixel p2) {
-                return p1.get_intensity() < p2.get_intensity();
-        });
-    }
-}
-
 glitch::Pixel glitch::Image::get_pixel(unsigned int x, unsigned int y){
     if(x > this->width || y > this->height){
         throw std::invalid_argument("invalid coordinate"); 
@@ -33,12 +21,21 @@ void glitch::Image::set_pixel(unsigned int x, unsigned int y, std::vector<unsign
     this->pixels[pixel_i].a = pixel[3];
 }
 
+void glitch::Image::set_pixel(unsigned int x, unsigned int y, glitch::Pixel pixel){
+    if(x > this->width || y > this->height){
+        throw std::invalid_argument("invalid coordinate"); 
+    }
+
+    const int pixel_i = (x + y * width) * 4;
+    this->pixels[pixel_i] = pixel;
+}
+
 
 int glitch::Pixel::get_intensity(){
     return (this->r + this->g + this->b) / 3;
 }
 
-void glitch::Image::load_image(char *filename){
+void glitch::Image::load(char *filename){
     std::vector<unsigned char> raw_pixels;
 
     unsigned error = lodepng::decode(raw_pixels, this->width, this->height, filename);
@@ -51,11 +48,9 @@ void glitch::Image::load_image(char *filename){
             glitch::Pixel{raw_pixels[i], raw_pixels[i+1], raw_pixels[i+2], raw_pixels[i+3]}
         );
     }
-
-
 }
 
-void glitch::Image::save_image(const char* filename) {
+void glitch::Image::save(const char* filename) {
   std::vector<unsigned char> raw_pixels = this->get_raw_pixels();
   unsigned error = lodepng::encode(filename, raw_pixels, this->width, this->height);
   if(error) std::cout << "encoder error " << error << ": "<< lodepng_error_text(error) << std::endl;
@@ -74,4 +69,36 @@ std::vector<unsigned char> glitch::Image::get_raw_pixels(){
     }
 
     return pixels_out;
+}
+
+
+// glitch algorithms
+void glitch::sort_filter(glitch::Image* image, unsigned int sections){   
+    omp_set_num_threads(sections);
+    #pragma omp parallel for
+    for (int i = 0; i < sections; i++){
+        std::vector<glitch::Pixel>::iterator begin_i = image->pixels.begin() + (i * (image->pixels.size() / sections));
+        std::vector<glitch::Pixel>::iterator end_i = image->pixels.begin() + ((i + 1) * (image->pixels.size() / sections));
+        std::sort(begin_i, end_i, [](Pixel p1, Pixel p2) {
+                return p1.get_intensity() < p2.get_intensity();
+        });
+    }
+}
+
+void glitch::swap_horizontal_filter(glitch::Image* image){
+    const int swaps_limit = image->width / 4;
+    for (int i = 0; i < image->height; i++){
+        for (int j = 0; j < swaps_limit; j++){
+            int p1_x = rand() % image->width;
+            int p2_x = rand() % image->width;
+
+
+            Pixel p1 = image->get_pixel(p1_x, i);
+            Pixel p2 = image->get_pixel(p2_x, i);
+            
+
+            image->set_pixel(p1_x, i, p2);
+            image->set_pixel(p2_x, i, p1);
+        }
+    }
 }

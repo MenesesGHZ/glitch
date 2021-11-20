@@ -25,12 +25,14 @@ namespace glitch{
 
         Pixel get_pixel(unsigned int, unsigned int);
         void set_pixel(unsigned int, unsigned int, std::vector<unsigned char>);
-        
+        void set_pixel(unsigned int, unsigned int, Pixel);
+
         std::vector<unsigned char> get_raw_pixels();
-        void load_image(char *);
-        void save_image(const char*);
+        void load(char *);
+        void save(const char*);
     };
 
     // glitching algorithms
-    void sort_distorsion(Image*, unsigned int);
+    void sort_filter(Image*, unsigned int);
+    void swap_horizontal_filter(Image*);
 }

@@ -12,7 +12,7 @@ int main(){
 
     // defining an image object
     glitch::Image image;
-    image.load_image(filename);
+    image.load(filename);
 
     // mock print
     std::cout << "Filename: " << filename << std::endl;
@@ -25,13 +25,13 @@ int main(){
 
 
     // applying glitch algorithm
-    glitch::sort_distorsion(&image, 4);
+    glitch::swap_horizontal_filter(&image);
 
     // saving image 
     char filename2[100];
     strcpy(filename2 , PROJECT_SOURCE_DIR);
     strcat(filename2, "/test/output/3.png");
-    image.save_image(filename2);
+    image.save(filename2);
 
     return 0;
 }
