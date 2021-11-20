@@ -1,11 +1,11 @@
 #include "glitch.hpp"
 
 glitch::Pixel glitch::Image::get_pixel(unsigned int x, unsigned int y){
+  
     if(x > this->width || y > this->height){
         throw std::invalid_argument("invalid coordinate"); 
     }
-
-    const int pixel_i = x + y * width;
+    const int pixel_i = x + y * width;    
     return this->pixels[pixel_i];
 }
 
@@ -86,19 +86,34 @@ void glitch::sort_filter(glitch::Image* image, unsigned int sections){
 }
 
 void glitch::swap_horizontal_filter(glitch::Image* image){
-    const int swaps_limit = image->width / 4;
-    for (int i = 0; i < image->height; i++){
+    const int swaps_limit = image->width / 2;
+    for (int i = 0; i < image->height; i+=rand() % 10){
         for (int j = 0; j < swaps_limit; j++){
             int p1_x = rand() % image->width;
             int p2_x = rand() % image->width;
 
-
             Pixel p1 = image->get_pixel(p1_x, i);
             Pixel p2 = image->get_pixel(p2_x, i);
             
-
             image->set_pixel(p1_x, i, p2);
             image->set_pixel(p2_x, i, p1);
+        }
+    }
+}
+
+
+void glitch::swap_vertical_filter(glitch::Image* image){
+    const int swaps_limit = image->height / 2;
+    for (int i = 0; i < image->width; i+=rand() % 10){
+        for (int j = 0; j < swaps_limit; j++){
+            int p1_y = rand() % image->height;
+            int p2_y = rand() % image->height;
+
+            Pixel p1 = image->get_pixel(i, p1_y);
+            Pixel p2 = image->get_pixel(i, p2_y);
+            
+            image->set_pixel(i, p1_y, p2);
+            image->set_pixel(i, p2_y, p1);
         }
     }
 }

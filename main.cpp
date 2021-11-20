@@ -8,7 +8,7 @@ int main(){
     // defining filename
     char filename[100];
     strcpy(filename , PROJECT_SOURCE_DIR);
-    strcat(filename, "/test/input/1.png");
+    strcat(filename, "/test/3.png");
 
     // defining an image object
     glitch::Image image;
@@ -25,12 +25,12 @@ int main(){
 
 
     // applying glitch algorithm
-    glitch::swap_horizontal_filter(&image);
+    glitch::swap_vertical_filter(&image);
 
     // saving image 
     char filename2[100];
     strcpy(filename2 , PROJECT_SOURCE_DIR);
-    strcat(filename2, "/test/output/1.png");
+    strcat(filename2, "/examples/swap_vertical_filter/3.png");
     image.save(filename2);
 
     return 0;

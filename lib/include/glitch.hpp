@@ -35,4 +35,5 @@ namespace glitch{
     // glitching algorithms
     void sort_filter(Image*, unsigned int);
     void swap_horizontal_filter(Image*);
+    void swap_vertical_filter(Image*);
 }
