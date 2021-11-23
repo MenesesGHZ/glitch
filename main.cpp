@@ -8,7 +8,7 @@ int main(){
     // defining filename
     char filename[100];
     strcpy(filename , PROJECT_SOURCE_DIR);
-    strcat(filename, "/test/2.png");
+    strcat(filename, "/test/1.png");
 
     // defining an image object
     glitch::Image image;
@@ -30,7 +30,7 @@ int main(){
     // saving image 
     char filename2[100];
     strcpy(filename2 , "/home/meneses/Documents/PROYECTOS/glitch");
-    strcat(filename2, "/examples/pixel_sorting_filter/2.png");
+    strcat(filename2, "/examples/pixel_sorting_filter/1.png");
     image.save(filename2);
 
     return 0;

@@ -44,8 +44,10 @@ namespace glitch{
         static const int blackness_criteria = 0;
       public:
         static void sort_column(glitch::Image* image, unsigned int x, unsigned int mode);
+        static void sort_row(glitch::Image* image, unsigned int y, unsigned int mode);
         static int get_first_not_black_x(Image*, int, int);
         static int get_first_not_black_y(Image*, int, int);
+        static int get_next_black_x(Image*, int, int);
         static int get_next_black_y(Image*, int, int);
         static int get_first_bright_y();
         static int get_next_dark_y();
