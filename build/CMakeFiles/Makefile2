@@ -148,8 +148,8 @@ CMakeFiles/lodepng.dir/clean:
 # Target rules for target CMakeFiles/Glitch.dir
 
 # All Build rule for target.
-CMakeFiles/Glitch.dir/all: CMakeFiles/glitch.dir/all
 CMakeFiles/Glitch.dir/all: CMakeFiles/lodepng.dir/all
+CMakeFiles/Glitch.dir/all: CMakeFiles/glitch.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Glitch.dir/build.make CMakeFiles/Glitch.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Glitch.dir/build.make CMakeFiles/Glitch.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/meneses/Documents/PROYECTOS/glitch/build/CMakeFiles --progress-num=1,2 "Built target Glitch"
