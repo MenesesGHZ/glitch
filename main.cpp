@@ -8,7 +8,7 @@ int main(){
     // defining filename
     char filename[100];
     strcpy(filename , PROJECT_SOURCE_DIR);
-    strcat(filename, "/test/3.png");
+    strcat(filename, "/test/2.png");
 
     // defining an image object
     glitch::Image image;
@@ -25,12 +25,12 @@ int main(){
 
 
     // applying glitch algorithm
-    glitch::swap_vertical_filter(&image);
+    glitch::PixelSorting::real_pixel_sort_filter(&image, 0);
 
     // saving image 
     char filename2[100];
-    strcpy(filename2 , PROJECT_SOURCE_DIR);
-    strcat(filename2, "/examples/swap_vertical_filter/3.png");
+    strcpy(filename2 , "/home/meneses/Documents/PROYECTOS/glitch");
+    strcat(filename2, "/examples/pixel_sorting_filter/2.png");
     image.save(filename2);
 
     return 0;
