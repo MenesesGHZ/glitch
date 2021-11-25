@@ -119,62 +119,25 @@ void glitch::swap_vertical_filter(glitch::Image* image){
 }
 
 
-
-void glitch::PixelSorting::sort_column(glitch::Image* image, unsigned int x, unsigned int mode){
-    unsigned int y = 0, y_end = 0;
-    while(y_end < image->height-1){
-        switch (mode){
-        case 0: // blackness
-            y = glitch::PixelSorting::get_first_not_black_y(image, x,y);
-            y_end = glitch::PixelSorting::get_next_black_y(image, x,y);
-            break;
-    // case 1: // brightness
-    //     y = get_first_bright_y(x,y);
-    //     y_end = get_next_dark_y(x,y);
-    //     break;
-    // case 2: // whiteness
-    //     y = get_first_not_white_y(x,y);
-    //     y_end = get_next_white_y(x,y);
-    //     break;
-        default:
-            break;
-        }
-
-        if(y < 0) break;
-        
-        int sort_length = y_end-y;
-        
-        std::vector<glitch::Pixel> sorted;
-        for(int i=0; i<sort_length; i++) {
-            sorted.push_back(image->get_pixel(x, y+i));
-        }
-        std::sort(sorted.begin(), sorted.end(), [](Pixel p1, Pixel p2) {
-            return p1.get_intensity() < p2.get_intensity();
-        });
-        for(int i=0; i<sort_length; i++) {
-            image->set_pixel(x, y+i, sorted[i]);
-        }
-        y = y_end+1;
+// Pixel Sorting 
+int glitch::PixelSorting::get_first_not_criteria_y(glitch::Image* image, int x, int y){
+    if(y >= image->height) {
+        return - 1;
     }
-}
 
-
-int glitch::PixelSorting::get_first_not_black_y(glitch::Image* image, int x, int y){
-    if(y < image->height) {
-        while(image->get_pixel(x, y).get_intensity() < glitch::PixelSorting::blackness_criteria) { 
-            y++;
-            if(y >= image->height) {
-                return -1;
-            }
+    while(image->get_pixel(x, y).get_intensity() < glitch::PixelSorting::criteria) {
+        y++;
+        if(y >= image->height) {
+            return - 1;
         }
     }
     return y;
 }
 
-int glitch::PixelSorting::get_next_black_y(glitch::Image* image, int x, int y){
+int glitch::PixelSorting::get_next_criteria_y(glitch::Image* image, int x, int y){
     y++;
     if(y < image->height){
-        while(image->get_pixel(x, y).get_intensity() > glitch::PixelSorting::blackness_criteria) { // need a fix
+        while(image->get_pixel(x, y).get_intensity() > glitch::PixelSorting::criteria) { // need a fix
             y++;
             if(y >= image->width) {
                 return image->height - 1;
@@ -184,8 +147,8 @@ int glitch::PixelSorting::get_next_black_y(glitch::Image* image, int x, int y){
     return y - 1; 
 }
 
-int glitch::PixelSorting::get_first_not_black_x(glitch::Image* image, int x, int y){
-    while(image->get_pixel(x, y).get_intensity() < glitch::PixelSorting::blackness_criteria) { // need a fix
+int glitch::PixelSorting::get_first_not_criteria_x(glitch::Image* image, int x, int y){
+    while(image->get_pixel(x, y).get_intensity() < glitch::PixelSorting::criteria) { // need a fix
         x++;
         if(x >= image->width) {
             return -1;
@@ -194,38 +157,24 @@ int glitch::PixelSorting::get_first_not_black_x(glitch::Image* image, int x, int
     return x;
 }
 
-int glitch::PixelSorting::get_next_black_x(glitch::Image* image, int x, int y){
+int glitch::PixelSorting::get_next_criteria_x(glitch::Image* image, int x, int y){
     x++;
-    while(image->get_pixel(x, y).get_intensity() > glitch::PixelSorting::blackness_criteria) { // need a fix
+    while(image->get_pixel(x, y).get_intensity() > glitch::PixelSorting::criteria) { // need a fix
         x++;
         if(x >= image->width) {
             return image->width-1;
         }
     }
-    return x-1;
+    return x - 1;
 }
 
-void glitch::PixelSorting::sort_row(glitch::Image* image, unsigned int y, unsigned int mode){
+void glitch::PixelSorting::sort_row(glitch::Image* image, unsigned int y){
     unsigned int x = 0, x_end = 0;
     while(x_end < image->width-1){
-        switch (mode){
-        case 0: // blackness
-            x = glitch::PixelSorting::get_first_not_black_x(image, x,y);
-            x_end = glitch::PixelSorting::get_next_black_x(image, x,y);
-            break;
-    // case 1: // brightness
-    //     y = get_first_bright_y(x,y);
-    //     y_end = get_next_dark_y(x,y);
-    //     break;
-    // case 2: // whiteness
-    //     y = get_first_not_white_y(x,y);
-    //     y_end = get_next_white_y(x,y);
-    //     break;
-        default:
-            break;
-        }
-
-        if(x < 0) break;
+        x = glitch::PixelSorting::get_first_not_criteria_x(image, x,y);
+        x_end = glitch::PixelSorting::get_next_criteria_x(image, x,y);
+        
+        if(x < 0 || x >= image->width) break;
         
         int sort_length = x_end-x;
         
@@ -243,15 +192,49 @@ void glitch::PixelSorting::sort_row(glitch::Image* image, unsigned int y, unsign
     }
 }
 
-
-
-
-void glitch::PixelSorting::real_pixel_sort_filter(glitch::Image* image, unsigned int mode){
-    for (int x = 0; x < image->width - 1; x++){
-        glitch::PixelSorting::sort_column(image, x, mode);
-    }
-
-    for (int y = 0; y < image->height - 1; y++){
-        glitch::PixelSorting::sort_row(image, y, mode);
+void glitch::PixelSorting::sort_column(glitch::Image* image, unsigned int x){
+    unsigned int y = 0, y_end = 0;
+    while(y_end < image->height-1){
+        y = glitch::PixelSorting::get_first_not_criteria_y(image, x,y);
+        y_end = glitch::PixelSorting::get_next_criteria_y(image, x,y);
+    
+        if(y < 0 || y >= image->height) break;
+        
+        int sort_length = y_end-y;
+        
+        std::vector<glitch::Pixel> sorted;
+        for(int i=0; i<sort_length; i++) {
+            if (y + i >= image->height){
+                std::cout<<"ENTRE: "<<y+1<<std::endl;
+                break;
+            }
+            sorted.push_back(image->get_pixel(x, y+i));
+        }
+        std::sort(sorted.begin(), sorted.end(), [](Pixel p1, Pixel p2) {
+            return p1.get_intensity() < p2.get_intensity();
+        });
+        for(int i=0; i<sort_length; i++) {
+            if (y + i >= image->height){
+                std::cout<< image->height <<" <= "<<y<<std::endl;
+                break;
+            }
+            image->set_pixel(x, y+i, sorted[i]);
+        }
+        y = y_end+1;
     }
 }
+
+void glitch::PixelSorting::pixel_sort_horizontal_filter(glitch::Image* image){
+    for (int y = 0; y < image->height - 1; y++){
+        glitch::PixelSorting::sort_row(image, y);
+    }
+}
+
+void glitch::PixelSorting::pixel_sort_vertical_filter(glitch::Image* image){
+    for (int x = 0; x < image->width - 1; x++){
+        glitch::PixelSorting::sort_column(image, x);
+    }    
+}
+
+int glitch::PixelSorting::criteria = 30;
+

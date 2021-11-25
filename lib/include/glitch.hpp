@@ -36,23 +36,18 @@ namespace glitch{
     void sort_filter(Image*, unsigned int);
     void swap_horizontal_filter(Image*);
     void swap_vertical_filter(Image*);
-    void shift_vertical_filter(Image*);
-    void shift_horizontal_filter(Image*);
-
     class PixelSorting{
       private:
-        static const int blackness_criteria = 0;
+        static void sort_column(Image*, unsigned int);
+        static void sort_row(Image*, unsigned int);
+        static int get_first_not_criteria_x(Image*, int, int);
+        static int get_first_not_criteria_y(Image*, int, int);
+        static int get_next_criteria_x(Image*, int, int);
+        static int get_next_criteria_y(Image*, int, int);
+
       public:
-        static void sort_column(glitch::Image* image, unsigned int x, unsigned int mode);
-        static void sort_row(glitch::Image* image, unsigned int y, unsigned int mode);
-        static int get_first_not_black_x(Image*, int, int);
-        static int get_first_not_black_y(Image*, int, int);
-        static int get_next_black_x(Image*, int, int);
-        static int get_next_black_y(Image*, int, int);
-        static int get_first_bright_y();
-        static int get_next_dark_y();
-        static int get_first_not_white_y();
-        static int get_next_white_y();
-        static void real_pixel_sort_filter(glitch::Image* image, unsigned int mode);
+        static void pixel_sort_horizontal_filter(Image*);
+        static void pixel_sort_vertical_filter(Image*);
+        static int criteria; // 0 - 255
     };
 }
