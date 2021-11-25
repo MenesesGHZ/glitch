@@ -17,15 +17,10 @@ int main(){
     // mock print
     std::cout << "Filename: " << filename << std::endl;
     std::cout << "Width: " << image.width << "  Height: " << image.height << std::endl << std::endl;
-    std::cout << "First Pixel: " 
-              << "\nR:" << static_cast<unsigned>(image.pixels[0].r) 
-              << "\nG:" << static_cast<unsigned>(image.pixels[0].g) 
-              << "\nB:" << static_cast<unsigned>(image.pixels[0].b) 
-              << "\nA:" << static_cast<unsigned>(image.pixels[0].a) << std::endl << std::endl;
-
-
+    
     // applying glitch algorithm
-    glitch::PixelSorting::real_pixel_sort_filter(&image, 0);
+    glitch::PixelSorting::criteria = 0;
+    glitch::PixelSorting::pixel_sort_vertical_filter(&image);
 
     // saving image 
     char filename2[100];
