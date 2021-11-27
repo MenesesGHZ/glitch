@@ -74,12 +74,12 @@ std::vector<unsigned char> glitch::Image::get_raw_pixels(){
 }
 
 
-// glitch algorithms
-void glitch::sort_filter(glitch::Image* image){   
+void glitch::sort_filter(glitch::Image* image){  
+    int sections = glitch::parallel_enabled ? glitch::threads : 1;
     #pragma omp parallel for num_threads(glitch::threads) if(glitch::parallel_enabled)
-    for (int i = 0; i < glitch::threads; i++){
-        std::vector<glitch::Pixel>::iterator begin_i = image->pixels.begin() + (i * (image->pixels.size() / glitch::threads));
-        std::vector<glitch::Pixel>::iterator end_i = image->pixels.begin() + ((i + 1) * (image->pixels.size() / glitch::threads));
+    for (int i = 0; i < sections; i++){
+        std::vector<glitch::Pixel>::iterator begin_i = image->pixels.begin() + (i * (image->pixels.size() / sections));
+        std::vector<glitch::Pixel>::iterator end_i = image->pixels.begin() + ((i + 1) * (image->pixels.size() / sections));
         std::sort(begin_i, end_i, [](Pixel p1, Pixel p2) {
                 return p1.get_intensity() < p2.get_intensity();
         });
