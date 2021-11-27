@@ -6,3 +6,27 @@
 
 #IncludeRegexTransform: 
 
+/home/meneses/Documents/PROYECTOS/glitch/vendor/lodepng/lodepng.cpp
+lodepng.h
+/home/meneses/Documents/PROYECTOS/glitch/vendor/lodepng/lodepng.h
+limits.h
+-
+stdio.h
+-
+stdlib.h
+-
+
+/home/meneses/Documents/PROYECTOS/glitch/vendor/lodepng/lodepng.h
+string.h
+-
+vector
+-
+string
+-
+lodepng.h
+/home/meneses/Documents/PROYECTOS/glitch/vendor/lodepng/lodepng.h
+iostream
+-
+lodepng.h
+/home/meneses/Documents/PROYECTOS/glitch/vendor/lodepng/lodepng.h
+
