@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/glitch.dir/lib/src/glitch.cpp.o"
+  "CMakeFiles/glitch.dir/lib/glitch.cpp.o"
   "libglitch.a"
   "libglitch.pdb"
 )

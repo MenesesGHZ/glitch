@@ -6,17 +6,19 @@
 
 #IncludeRegexTransform: 
 
-../lib/include/glitch.hpp
+../lib/glitch.hpp
 vector
 -
 omp.h
 -
-iostream
--
 algorithm
 -
+string
+-
+map
+-
 lodepng.h
-../lib/include/lodepng.h
+../lib/lodepng.h
 
 ../vendor/lodepng/lodepng.h
 string.h
@@ -33,7 +35,7 @@ lodepng.h
 ../vendor/lodepng/lodepng.h
 
 /home/meneses/Documents/PROYECTOS/glitch/main.cpp
-vector
+getopt.h
 -
 glitch.hpp
 /home/meneses/Documents/PROYECTOS/glitch/glitch.hpp

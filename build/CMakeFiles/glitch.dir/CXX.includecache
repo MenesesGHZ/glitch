@@ -6,18 +6,6 @@
 
 #IncludeRegexTransform: 
 
-../lib/include/glitch.hpp
-vector
--
-omp.h
--
-iostream
--
-algorithm
--
-lodepng.h
-../lib/include/lodepng.h
-
 ../vendor/lodepng/lodepng.h
 string.h
 -
@@ -32,7 +20,21 @@ iostream
 lodepng.h
 ../vendor/lodepng/lodepng.h
 
-/home/meneses/Documents/PROYECTOS/glitch/lib/src/glitch.cpp
+/home/meneses/Documents/PROYECTOS/glitch/lib/glitch.cpp
 glitch.hpp
-/home/meneses/Documents/PROYECTOS/glitch/lib/src/glitch.hpp
+/home/meneses/Documents/PROYECTOS/glitch/lib/glitch.hpp
+
+/home/meneses/Documents/PROYECTOS/glitch/lib/glitch.hpp
+vector
+-
+omp.h
+-
+algorithm
+-
+string
+-
+map
+-
+lodepng.h
+/home/meneses/Documents/PROYECTOS/glitch/lib/lodepng.h
 

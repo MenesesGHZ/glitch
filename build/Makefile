@@ -168,32 +168,32 @@ Glitch/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Glitch.dir/build.make CMakeFiles/Glitch.dir/build
 .PHONY : Glitch/fast
 
-lib/src/glitch.o: lib/src/glitch.cpp.o
+lib/glitch.o: lib/glitch.cpp.o
 
-.PHONY : lib/src/glitch.o
+.PHONY : lib/glitch.o
 
 # target to build an object file
-lib/src/glitch.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/glitch.dir/build.make CMakeFiles/glitch.dir/lib/src/glitch.cpp.o
-.PHONY : lib/src/glitch.cpp.o
+lib/glitch.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/glitch.dir/build.make CMakeFiles/glitch.dir/lib/glitch.cpp.o
+.PHONY : lib/glitch.cpp.o
 
-lib/src/glitch.i: lib/src/glitch.cpp.i
+lib/glitch.i: lib/glitch.cpp.i
 
-.PHONY : lib/src/glitch.i
+.PHONY : lib/glitch.i
 
 # target to preprocess a source file
-lib/src/glitch.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/glitch.dir/build.make CMakeFiles/glitch.dir/lib/src/glitch.cpp.i
-.PHONY : lib/src/glitch.cpp.i
+lib/glitch.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/glitch.dir/build.make CMakeFiles/glitch.dir/lib/glitch.cpp.i
+.PHONY : lib/glitch.cpp.i
 
-lib/src/glitch.s: lib/src/glitch.cpp.s
+lib/glitch.s: lib/glitch.cpp.s
 
-.PHONY : lib/src/glitch.s
+.PHONY : lib/glitch.s
 
 # target to generate assembly for a file
-lib/src/glitch.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/glitch.dir/build.make CMakeFiles/glitch.dir/lib/src/glitch.cpp.s
-.PHONY : lib/src/glitch.cpp.s
+lib/glitch.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/glitch.dir/build.make CMakeFiles/glitch.dir/lib/glitch.cpp.s
+.PHONY : lib/glitch.cpp.s
 
 main.o: main.cpp.o
 
@@ -260,9 +260,9 @@ help:
 	@echo "... Glitch"
 	@echo "... glitch"
 	@echo "... lodepng"
-	@echo "... lib/src/glitch.o"
-	@echo "... lib/src/glitch.i"
-	@echo "... lib/src/glitch.s"
+	@echo "... lib/glitch.o"
+	@echo "... lib/glitch.i"
+	@echo "... lib/glitch.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
