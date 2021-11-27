@@ -8,9 +8,8 @@ std::vector<std::string> filter_sequence = {"psh"};
 bool verbose = false;
 
 int main(int argc, char** argv){
+    // reading arguments and loading image
     read_cli_parameters(argc, argv);
-
-    // loading image
     glitch::Image image;
     image.load(&input_file[0]);
 
@@ -42,17 +41,17 @@ int main(int argc, char** argv){
 
 
 void read_cli_parameters(int argc, char** argv){
-    const char* const short_opts = "i:o:f:cpvh";
+    const char* const short_opts = "i:o:f:c:pt:vh";
     const option long_options[] = {
-       {"input",   required_argument, nullptr, 'i'},
-       {"output",  required_argument, nullptr, 'o'},
+       {"input",    required_argument, nullptr, 'i'},
+       {"output",   required_argument, nullptr, 'o'},
        {"filters",  required_argument, nullptr, 'f'},
-       {"criteria",required_argument, nullptr, 'c'},
-       {"parallel",no_argument,       nullptr, 'p'},
-       {"threads", required_argument, nullptr, 't'},
-       {"verbose", no_argument,       nullptr, 'v'},
-       {"help",    no_argument,       nullptr, 'h'},
-       {0,         no_argument,       nullptr,  0 }
+       {"criteria", required_argument, nullptr, 'c'},
+       {"parallel", no_argument,       nullptr, 'p'},
+       {"threads",  required_argument, nullptr, 't'},
+       {"verbose",  no_argument,       nullptr, 'v'},
+       {"help",     no_argument,       nullptr, 'h'},
+       {0,          no_argument,       nullptr,  0 }
     };
     bool failure = false;
 
@@ -60,17 +59,17 @@ void read_cli_parameters(int argc, char** argv){
         printf( 
             "\nOptions:\n"
             "   -i, --input <path>: Set relative path to the input image\n"
-            "   -o, --output <path>: Set relative path to save the output image\n"
-            "   -f, --filters: Set filter(s) to be applied sequentally separeted by comma (e.g. psv,psh,sv,...)\n"
+            "   -o, --output <path>: Set relative path to save the output image. (default = './output.png')\n"
+            "   -f, --filters: Set filter(s) to be applied sequentally separeted by comma (e.g. psv,psh,sv,...). (default = psh)\n"
             "          psv: pixel sort vertical\n"
             "          psh: pixel sort horizontal\n"
             "          sv:  swap vertical\n"
             "          sh:  swap horiztonal\n"
             "          s:   sort pixels\n\n"
-            "   -c, --criteria <int>: Set criteria integer for [psv, psh] filters. Recommended value between (0 - 255)\n"
-            "   -p, --parallel: A flag to enable parallel computing. (default threads = 4)\n"
-            "   -t, --threads <int>: Set number of threads. default = 4\n"
-            "   -v, --verbose: A flag to enable verbose mode\n"
+            "   -c, --criteria <int>: Set criteria integer for [psv, psh] filters. Recommended value between 0 - 255. (default = 100)\n"
+            "   -p, --parallel: A flag to enable parallel computing. (default disabled; default threads = 4)\n"
+            "   -t, --threads <int>: Set number of threads. (default = 4)\n"
+            "   -v, --verbose: A flag to enable verbose mode. (default disabled)\n"
             "   -h, --help: Display this message\n\n"            
         );
     };
@@ -81,16 +80,13 @@ void read_cli_parameters(int argc, char** argv){
 
         if (opt == -1)
             break;
-
         switch (opt) {
             case 'i':
                 input_file = std::string(optarg);
                 break;
-
             case 'o':
                 output_file = std::string(optarg);
                 break;
-
             case 'f':
                 filter_sequence.clear();
                 filter_arg = std::string(optarg);
@@ -104,32 +100,25 @@ void read_cli_parameters(int argc, char** argv){
                     if (i == filter_arg.size()-1) filter_sequence.push_back(filter);   
                 }
                 break;
-
             case 'c':
                 glitch::PixelSorting::criteria = std::stoi(optarg);
                 break;
-
             case 'p':
                 glitch::parallel_enabled = true;
                 break;
-
             case 't':
                 glitch::threads = std::stoi(optarg);
                 break;
-
             case 'v':
                 verbose = true;
                 break;
-
             case 'h':
                 print_help();
                 exit(EXIT_SUCCESS);
-
             case '?':
                 print_help();
                 failure = true;
                 break;
-
             default:
                 print_help();
                 break;
@@ -147,6 +136,5 @@ void read_cli_parameters(int argc, char** argv){
             break;
         }
     }
-
     if (failure) exit(EXIT_FAILURE);  
 }
