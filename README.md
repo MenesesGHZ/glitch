@@ -37,7 +37,7 @@ Once the binary file called **Glitch** has been generated you are ready to go. T
 
 Which is going to display the following message:
 ```bash
-    Options:
+Options:
     -i, --input <path>: Set relative path to the input image
     -o, --output <path>: Set relative path to save the output image. (default = './output.png')
     -f, --filters: Set filter(s) to be applied sequentally separeted by comma (e.g. psv,sv,psv,...). (default = psh)
@@ -57,11 +57,11 @@ Which is going to display the following message:
 Here is a list of the filters you could apply with a brief description, and also a sample url-image:
 | Filter | Name                    | Description | Sample URL-image |
 |:-:     |:-:                      |:-:|                                                                         | :-: |
-| psv    | pixel sort vertical     | sorts each column base on -c, --criteria variable and the pixel's intensity |
-| psh    | pixel sort horizontal   | sorts each row base on -c, --criteria variable and the pixel's intensity  |
-| sv     | swap vertical           | swaps the position of two random pixels of random columns of an image |
-| sh     | swap horizontal         | swaps the position of two random pixels of random rows of an image  |
-|  s     | sort pixels             | sorts pixels incrementally base on the pixel's intensity  |
+| psv    | pixel sort vertical     | sorts each column base on -c, --criteria variable and the pixel's intensity |     |
+| psh    | pixel sort horizontal   | sorts each row base on -c, --criteria variable and the pixel's intensity  |       |
+| sv     | swap vertical           | swaps the position of two random pixels of random columns of an image |           |
+| sh     | swap horizontal         | swaps the position of two random pixels of random rows of an image  |             |
+|  s     | sort pixels             | sorts pixels incrementally base on the pixel's intensity  |                       |
 
 
 
