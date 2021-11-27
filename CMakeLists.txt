@@ -18,8 +18,8 @@ add_library(lodepng vendor/lodepng/lodepng.cpp)
 target_include_directories(lodepng PUBLIC "${PROJECT_SOURCE_DIR}/vendor/lodepng")
 
 # defining glitch library
-add_library(glitch lib/src/glitch.cpp)
-target_include_directories(glitch PUBLIC "${PROJECT_SOURCE_DIR}/lib/include")
+add_library(glitch lib/glitch.cpp)
+target_include_directories(glitch PUBLIC "${PROJECT_SOURCE_DIR}/lib/")
 target_link_libraries(glitch PUBLIC lodepng)
 
 # add openmp library
