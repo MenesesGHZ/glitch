@@ -1,8 +1,11 @@
 #include "glitch.hpp"
 
+int glitch::PixelSorting::criteria = 30;
+bool glitch::parallel_enabled = false;
+int glitch::threads = 4;
+
 glitch::Pixel glitch::Image::get_pixel(unsigned int x, unsigned int y){
     if(x > this->width || y > this->height){
-        std::cout<< x <<"get" << y<< std::endl; 
         throw std::invalid_argument("invalid coordinate"); 
     }
     const int pixel_i = x + y * width;    
@@ -11,7 +14,6 @@ glitch::Pixel glitch::Image::get_pixel(unsigned int x, unsigned int y){
 
 void glitch::Image::set_pixel(unsigned int x, unsigned int y, std::vector<unsigned char> pixel){
     if(x > this->width || y > this->height){
-        std::cout<< x <<"set" << y<< std::endl; 
         throw std::invalid_argument("invalid coordinate"); 
     }
 
@@ -24,7 +26,6 @@ void glitch::Image::set_pixel(unsigned int x, unsigned int y, std::vector<unsign
 
 void glitch::Image::set_pixel(unsigned int x, unsigned int y, glitch::Pixel pixel){
     if(x > this->width || y > this->height){
-        std::cout<< x <<"set" << y<< std::endl; 
         throw std::invalid_argument("invalid coordinate"); 
     }
     const int pixel_i = x + y * width;
@@ -41,7 +42,7 @@ void glitch::Image::load(char *filename){
 
     unsigned error = lodepng::decode(raw_pixels, this->width, this->height, filename);
     if(error){
-        std::cout << "decoder error " << error << ": " << lodepng_error_text(error) << std::endl;
+        printf("decoder error %d: %s", error, lodepng_error_text(error));
     } 
 
     for(int i = 0; i < raw_pixels.size(); i+=4){
@@ -54,9 +55,9 @@ void glitch::Image::load(char *filename){
 void glitch::Image::save(const char* filename) {
   std::vector<unsigned char> raw_pixels = this->get_raw_pixels();
   unsigned error = lodepng::encode(filename, raw_pixels, this->width, this->height);
-  if(error) std::cout << "encoder error " << error << ": "<< lodepng_error_text(error) << std::endl;
-}
+  if(error) printf("encode error %d: %s", error, lodepng_error_text(error));
 
+}
 
 
 std::vector<unsigned char> glitch::Image::get_raw_pixels(){
@@ -74,12 +75,11 @@ std::vector<unsigned char> glitch::Image::get_raw_pixels(){
 
 
 // glitch algorithms
-void glitch::sort_filter(glitch::Image* image, unsigned int sections){   
-    omp_set_num_threads(sections);
-    #pragma omp parallel for
-    for (int i = 0; i < sections; i++){
-        std::vector<glitch::Pixel>::iterator begin_i = image->pixels.begin() + (i * (image->pixels.size() / sections));
-        std::vector<glitch::Pixel>::iterator end_i = image->pixels.begin() + ((i + 1) * (image->pixels.size() / sections));
+void glitch::sort_filter(glitch::Image* image){   
+    #pragma omp parallel for num_threads(glitch::threads) if(glitch::parallel_enabled)
+    for (int i = 0; i < glitch::threads; i++){
+        std::vector<glitch::Pixel>::iterator begin_i = image->pixels.begin() + (i * (image->pixels.size() / glitch::threads));
+        std::vector<glitch::Pixel>::iterator end_i = image->pixels.begin() + ((i + 1) * (image->pixels.size() / glitch::threads));
         std::sort(begin_i, end_i, [](Pixel p1, Pixel p2) {
                 return p1.get_intensity() < p2.get_intensity();
         });
@@ -118,8 +118,6 @@ void glitch::swap_vertical_filter(glitch::Image* image){
     }
 }
 
-
-// Pixel Sorting 
 int glitch::PixelSorting::get_first_not_criteria_y(glitch::Image* image, int x, int y){
     if(y >= image->height) {
         return - 1;
@@ -205,7 +203,6 @@ void glitch::PixelSorting::sort_column(glitch::Image* image, unsigned int x){
         std::vector<glitch::Pixel> sorted;
         for(int i=0; i<sort_length; i++) {
             if (y + i >= image->height){
-                std::cout<<"ENTRE: "<<y+1<<std::endl;
                 break;
             }
             sorted.push_back(image->get_pixel(x, y+i));
@@ -215,7 +212,6 @@ void glitch::PixelSorting::sort_column(glitch::Image* image, unsigned int x){
         });
         for(int i=0; i<sort_length; i++) {
             if (y + i >= image->height){
-                std::cout<< image->height <<" <= "<<y<<std::endl;
                 break;
             }
             image->set_pixel(x, y+i, sorted[i]);
@@ -225,16 +221,46 @@ void glitch::PixelSorting::sort_column(glitch::Image* image, unsigned int x){
 }
 
 void glitch::PixelSorting::pixel_sort_horizontal_filter(glitch::Image* image){
+    #pragma omp parallel for schedule(dynamic, 4) num_threads(glitch::threads) if(glitch::parallel_enabled)
     for (int y = 0; y < image->height - 1; y++){
         glitch::PixelSorting::sort_row(image, y);
     }
 }
 
 void glitch::PixelSorting::pixel_sort_vertical_filter(glitch::Image* image){
+    #pragma omp parallel for schedule(dynamic, 4) num_threads(glitch::threads) if(glitch::parallel_enabled)
     for (int x = 0; x < image->width - 1; x++){
         glitch::PixelSorting::sort_column(image, x);
-    }    
+    }
 }
 
-int glitch::PixelSorting::criteria = 30;
-
+//void glitch::PixelSorting::pixel_sort_vertical_filter(glitch::Image* image){
+//    for (int THREADS = 1; THREADS < 13; THREADS++){
+//         // defining filename
+//        char filename[100];
+//        strcpy(filename , "/home/meneses/Documents/PROYECTOS/glitch");
+//        strcat(filename, "/test/2.png");
+//
+//        // defining an image object
+//        glitch::Image new_image;
+//        new_image.load(filename);
+//
+//        const double time_init = omp_get_wtime();
+//
+//        #pragma omp parallel for schedule(auto) num_threads(THREADS)
+//        for (int x = 0; x < new_image.width - 1; x++){
+//            glitch::PixelSorting::sort_column(&new_image, x);
+//        }    
+//     
+//        std::cout<< "Parallel[" << THREADS << "]\nTime: " << float(omp_get_wtime() - time_init) << std::endl;
+//        
+//        std::string result_name = std::to_string(THREADS) + ".png";
+//
+//        char filename2[100];
+//        strcpy(filename2 , "/home/meneses/Documents/PROYECTOS/glitch");
+//        strcat(filename2, "/examples/school_project/parallel_schedule_auto/");
+//        strcat(filename2, result_name.c_str());
+//        new_image.save(filename2);
+//    }
+//
+//}

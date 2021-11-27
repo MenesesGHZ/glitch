@@ -2,11 +2,14 @@
 
 #include <vector>
 #include <omp.h>
-#include <iostream>
 #include <algorithm>
+#include <string>
+#include <map>
 #include "lodepng.h"
 
 namespace glitch{
+    extern bool parallel_enabled;
+    extern int threads;
 
     class Pixel{
       public:
@@ -33,7 +36,7 @@ namespace glitch{
     };
 
     // glitching algorithms
-    void sort_filter(Image*, unsigned int);
+    void sort_filter(Image*);
     void swap_horizontal_filter(Image*);
     void swap_vertical_filter(Image*);
     class PixelSorting{
@@ -49,5 +52,13 @@ namespace glitch{
         static void pixel_sort_horizontal_filter(Image*);
         static void pixel_sort_vertical_filter(Image*);
         static int criteria; // 0 - 255
+    };
+
+    const std::map<std::string, void (*)(Image*)> filters = {
+        {"psh", &PixelSorting::pixel_sort_horizontal_filter},
+        {"psv", &PixelSorting::pixel_sort_vertical_filter},
+        {"sh", &swap_horizontal_filter},
+        {"sv", &swap_vertical_filter},
+        {"s", &sort_filter}
     };
 }
