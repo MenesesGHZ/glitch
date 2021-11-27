@@ -47,11 +47,8 @@ Finally run the *make* command to invoke the generated Makefile (one of the file
     ```
 
 ### Usage
-Once the binary file called **Glitch** has been generated you are ready to go. To see more details about how to use this software you can type on your command line:
-    ```bash
-    ./Glitch --help
-    ```
-
+Once the binary file called **Glitch** has been generated you are ready to go. To see more details about how to use this software you can type on your command line: ```./Glitch --help```
+    
 Which is going to display the following message:
 ```bash
 Options:
