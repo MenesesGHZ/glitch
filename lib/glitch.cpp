@@ -1,6 +1,6 @@
 #include "glitch.hpp"
 
-int glitch::PixelSorting::criteria = 30;
+int glitch::PixelSorting::criteria = 100;
 bool glitch::parallel_enabled = false;
 int glitch::threads = 4;
 
@@ -135,7 +135,7 @@ int glitch::PixelSorting::get_first_not_criteria_y(glitch::Image* image, int x, 
 int glitch::PixelSorting::get_next_criteria_y(glitch::Image* image, int x, int y){
     y++;
     if(y < image->height){
-        while(image->get_pixel(x, y).get_intensity() > glitch::PixelSorting::criteria) { // need a fix
+        while(image->get_pixel(x, y).get_intensity() > glitch::PixelSorting::criteria) {
             y++;
             if(y >= image->width) {
                 return image->height - 1;
@@ -146,7 +146,7 @@ int glitch::PixelSorting::get_next_criteria_y(glitch::Image* image, int x, int y
 }
 
 int glitch::PixelSorting::get_first_not_criteria_x(glitch::Image* image, int x, int y){
-    while(image->get_pixel(x, y).get_intensity() < glitch::PixelSorting::criteria) { // need a fix
+    while(image->get_pixel(x, y).get_intensity() < glitch::PixelSorting::criteria) { 
         x++;
         if(x >= image->width) {
             return -1;
@@ -157,7 +157,7 @@ int glitch::PixelSorting::get_first_not_criteria_x(glitch::Image* image, int x, 
 
 int glitch::PixelSorting::get_next_criteria_x(glitch::Image* image, int x, int y){
     x++;
-    while(image->get_pixel(x, y).get_intensity() > glitch::PixelSorting::criteria) { // need a fix
+    while(image->get_pixel(x, y).get_intensity() > glitch::PixelSorting::criteria) { 
         x++;
         if(x >= image->width) {
             return image->width-1;
@@ -233,34 +233,3 @@ void glitch::PixelSorting::pixel_sort_vertical_filter(glitch::Image* image){
         glitch::PixelSorting::sort_column(image, x);
     }
 }
-
-//void glitch::PixelSorting::pixel_sort_vertical_filter(glitch::Image* image){
-//    for (int THREADS = 1; THREADS < 13; THREADS++){
-//         // defining filename
-//        char filename[100];
-//        strcpy(filename , "/home/meneses/Documents/PROYECTOS/glitch");
-//        strcat(filename, "/test/2.png");
-//
-//        // defining an image object
-//        glitch::Image new_image;
-//        new_image.load(filename);
-//
-//        const double time_init = omp_get_wtime();
-//
-//        #pragma omp parallel for schedule(auto) num_threads(THREADS)
-//        for (int x = 0; x < new_image.width - 1; x++){
-//            glitch::PixelSorting::sort_column(&new_image, x);
-//        }    
-//     
-//        std::cout<< "Parallel[" << THREADS << "]\nTime: " << float(omp_get_wtime() - time_init) << std::endl;
-//        
-//        std::string result_name = std::to_string(THREADS) + ".png";
-//
-//        char filename2[100];
-//        strcpy(filename2 , "/home/meneses/Documents/PROYECTOS/glitch");
-//        strcat(filename2, "/examples/school_project/parallel_schedule_auto/");
-//        strcat(filename2, result_name.c_str());
-//        new_image.save(filename2);
-//    }
-//
-//}
