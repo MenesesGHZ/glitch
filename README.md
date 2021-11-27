@@ -1,7 +1,7 @@
 <h1 align="center" >Glitch Image Effect with OpenMP </h1>
 
 <div align="center">
-<img alt="dorohedoro's glitch" src="/../master/examples/pixel_sorting_filter/14_vertical.png">
+<img alt="dorohedoro's glitch" src="/../with_test_examples/examples/pixel_sorting_filter/14_vertical.png">
 </div>
 <div align="center">
 <img alt="C++ version" src="https://img.shields.io/badge/C++-v11-blue?style=flat-square">
@@ -74,11 +74,11 @@ Options:
 Here is a list of the filters you could apply with a brief description, and also a sample url-image:
 | Filter | Name                    | Description                                                                 | Sample URL-image |
 |:-:     |:-:                      |:-:                                                                          | :-: |
-| psv    | pixel sort vertical     | sorts each column base on -c, --criteria variable and the pixel's intensity | [ctrl+click](https://github.com/MenesesGHZ/glitch/blob/master/examples/pixel_sorting_filter/14_vertical.png)    |
-| psh    | pixel sort horizontal   | sorts each row base on -c, --criteria variable and the pixel's intensity  | [ctrl+click](https://github.com/MenesesGHZ/glitch/blob/master/examples/pixel_sorting_filter/14_horizontal.png)  |
-| sv     | swap vertical           | swaps the position of two random pixels of random columns of an image |  [ctrl+click](https://github.com/MenesesGHZ/glitch/blob/master/examples/swap_vertical_filter/2.png)         |
-| sh     | swap horizontal         | swaps the position of two random pixels of random rows of an image  | [ctrl+click](https://github.com/MenesesGHZ/glitch/blob/master/examples/swap_horizontal_filter/2.png)            |
-|  s     | sort pixels             | sorts pixels incrementally base on the pixel's intensity  | [ctrl+click](https://github.com/MenesesGHZ/glitch/blob/master/examples/sort_filter/10.png)                      |
+| psv    | pixel sort vertical     | sorts each column base on -c, --criteria variable and the pixel's intensity | [ctrl+click](https://github.com/MenesesGHZ/glitch/blob/with_test_examples/examples/pixel_sorting_filter/14_vertical.png)    |
+| psh    | pixel sort horizontal   | sorts each row base on -c, --criteria variable and the pixel's intensity  | [ctrl+click](https://github.com/MenesesGHZ/glitch/blob/with_test_examples/examples/pixel_sorting_filter/14_horizontal.png)  |
+| sv     | swap vertical           | swaps the position of two random pixels of random columns of an image |  [ctrl+click](https://github.com/MenesesGHZ/glitch/blob/with_test_examples/examples/swap_vertical_filter/2.png)         |
+| sh     | swap horizontal         | swaps the position of two random pixels of random rows of an image  | [ctrl+click](https://github.com/MenesesGHZ/glitch/blob/with_test_examples/examples/swap_horizontal_filter/2.png)            |
+|  s     | sort pixels             | sorts pixels incrementally base on the pixel's intensity  | [ctrl+click](https://github.com/MenesesGHZ/glitch/blob/with_test_examples/examples/sort_filter/10.png)                      |
 
 
 
