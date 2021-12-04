@@ -228,8 +228,10 @@ void glitch::PixelSorting::pixel_sort_horizontal_filter(glitch::Image* image){
 }
 
 void glitch::PixelSorting::pixel_sort_vertical_filter(glitch::Image* image){
+    const double time_init = omp_get_wtime();
     #pragma omp parallel for schedule(dynamic, 4) num_threads(glitch::threads) if(glitch::parallel_enabled)
     for (int x = 0; x < image->width - 1; x++){
         glitch::PixelSorting::sort_column(image, x);
     }
+    printf("threads: %d; secs:%f\n",glitch::threads, float(omp_get_wtime() - time_init));
 }
